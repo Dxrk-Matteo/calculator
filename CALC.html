@@ -51,8 +51,11 @@
       switch (operator) {
         case "+":
           return op1 + op2
-          break;
-      
+           break;
+        case "-":
+          return op1 - op2
+           break;
+
       }
     }
 
@@ -109,6 +112,14 @@
         currentValue = 0
         disp.innerText = currentValue.toString();
       });
+
+      document.getElementById("key--").addEventListener('click', function () {
+      op1 = currentValue;
+        operator = "-"
+        currentValue = 0
+        disp.innerText = currentValue.toString();
+      });
+
       document.getElementById("key-=").addEventListener('click', function () {
         op2 = currentValue;
         var result = calc()
@@ -119,7 +130,7 @@
         operator = null
       });
     }
-  
+
 
     window.addEventListener('DOMContentLoaded', init);
   </script>
