@@ -41,14 +41,22 @@
   <script>
     var disp;
     var currentValue = 0;
+    var op1 = 0;
+    var op2 = 0;
+    var operator = null;
     function add0() {
 
     }
-    function add1() {
-      ;
+    function calc() {
+      switch (operator) {
+        case "+":
+          return op1 + op2
+          break;
+      
+      }
     }
 
-    function calc() {
+    function init() {
       disp = document.getElementById('disp');
 
       document.getElementById("key-0").addEventListener('click', function () {
@@ -95,11 +103,25 @@
         currentValue = 0
         disp.innerText = currentValue.toString();
       });
+      document.getElementById("key-+").addEventListener('click', function () {
+        op1 = currentValue;
+        operator = "+"
+        currentValue = 0
+        disp.innerText = currentValue.toString();
+      });
+      document.getElementById("key-=").addEventListener('click', function () {
+        op2 = currentValue;
+        var result = calc()
+        currentValue = 0
+        disp.innerText = result.toString();
+        op1 = 0
+        op2 = 0
+        operator = null
+      });
     }
+  
 
-
-
-    window.addEventListener('DOMContentLoaded', calc);
+    window.addEventListener('DOMContentLoaded', init);
   </script>
 </head>
 
