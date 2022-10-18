@@ -1,0 +1,126 @@
+<html>
+
+<head>
+  <style>
+    .item {
+      width: 21%;
+      flex-shrink: 0;
+      font-size: larger;
+      text-align: center;
+      height: max-content;
+      padding: 1%;
+      background-color: rgb(0, 0, 0);
+      color: rgb(255, 255, 255);
+    }
+
+    #disp {
+      background-color: rgb(60, 87, 58);
+      width: 98%;
+      padding: 5%;
+    }
+
+    #key-0 {
+      width: 71%;
+    }
+
+    .operatoren {
+      width: 23%;
+      background-color: rgb(73, 73, 73);
+    }
+
+
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 2%;
+
+
+    }
+  </style>
+  <script>
+    var disp;
+    var currentValue = 0;
+    function add0() {
+
+    }
+    function add1() {
+      ;
+    }
+
+    function calc() {
+      disp = document.getElementById('disp');
+
+      document.getElementById("key-0").addEventListener('click', function () {
+        currentValue = currentValue * 10;
+        disp.innerText = currentValue.toString();
+      });
+      document.getElementById("key-1").addEventListener('click', function () {
+        currentValue = currentValue * 10 + 1
+        disp.innerText = currentValue.toString();
+      });
+      document.getElementById("key-2").addEventListener('click', function () {
+        currentValue = currentValue * 10 + 2
+        disp.innerText = currentValue.toString();
+      });
+      document.getElementById("key-3").addEventListener('click', function () {
+        currentValue = currentValue * 10 + 3
+        disp.innerText = currentValue.toString();
+      });
+      document.getElementById("key-4").addEventListener('click', function () {
+        currentValue = currentValue * 10 + 4
+        disp.innerText = currentValue.toString();
+      });
+      document.getElementById("key-5").addEventListener('click', function () {
+        currentValue = currentValue * 10 + 5
+        disp.innerText = currentValue.toString();
+      });
+      document.getElementById("key-6").addEventListener('click', function () {
+        currentValue = currentValue * 10 + 6
+        disp.innerText = currentValue.toString();
+      });   
+         document.getElementById("key-7").addEventListener('click', function () {
+        currentValue = currentValue * 10 + 7
+        disp.innerText = currentValue.toString();
+      });
+         document.getElementById("key-8").addEventListener('click', function () {
+        currentValue = currentValue * 10 + 8
+        disp.innerText = currentValue.toString();
+      });
+      document.getElementById("key-9").addEventListener('click', function () {
+        currentValue = currentValue * 10 + 9
+        disp.innerText = currentValue.toString();
+      });
+      document.getElementById("key-ac").addEventListener('click', function () {
+        currentValue = 0
+        disp.innerText = currentValue.toString();
+      });
+    }
+
+
+
+    window.addEventListener('DOMContentLoaded', calc);
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div id="disp"> </div>
+    <div id="key-9" class="item">9 </div>
+    <div id="key-8" class="item">8 </div>
+    <div id="key-7" class="item">7 </div>
+    <div id="key-ac" class="item operatoren">AC</div>
+    <div id="key-6" class="item">6 </div>
+    <div id="key-5" class="item">5 </div>
+    <div id="key-4" class="item">4 </div>
+    <div id="key-+" class="item operatoren">+</div>
+    <div id="key-3" class="item">3</div>
+    <div id="key-2" class="item">2</div>
+    <div id="key-1" class="item">1</div>
+    <div id="key--" class="item operatoren">-</div>
+    <div id="key-0" class="item">0</div>
+    <div id="key-=" class="item operatoren">=</div>
+  </div>
+</body>
+
+</html>
