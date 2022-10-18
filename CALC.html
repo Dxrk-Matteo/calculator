@@ -28,6 +28,10 @@
       background-color: rgb(73, 73, 73);
     }
 
+    .operatoren2 {
+      width: 47%;
+    }
+
 
 
     .container {
@@ -51,11 +55,19 @@
       switch (operator) {
         case "+":
           return op1 + op2
-           break;
+          break;
         case "-":
           return op1 - op2
-           break;
-
+          break;
+        case "x":
+          return op1 * op2
+          break;
+        case ":":
+          if (op2 === 0) {
+            return "N.D."
+          }
+          return op1 / op2
+          break;
       }
     }
 
@@ -105,7 +117,7 @@
       document.getElementById("key-ac").addEventListener('click', function () {
         currentValue = 0
         disp.innerText = currentValue.toString();
-      });
+      })
       document.getElementById("key-+").addEventListener('click', function () {
         op1 = currentValue;
         operator = "+"
@@ -114,13 +126,28 @@
       });
 
       document.getElementById("key--").addEventListener('click', function () {
-      op1 = currentValue;
+        op1 = currentValue;
         operator = "-"
         currentValue = 0
         disp.innerText = currentValue.toString();
       });
 
+      document.getElementById("key-x").addEventListener('click', function () {
+        op1 = currentValue;
+        operator = "x"
+        currentValue = 0
+        disp.innerText = currentValue.toString();
+      });
+
+      document.getElementById("key-:").addEventListener('click', function () {
+        op1 = currentValue;
+        operator = ":"
+        currentValue = 0
+        disp.innerText = currentValue.toString();
+      });
+
       document.getElementById("key-=").addEventListener('click', function () {
+
         op2 = currentValue;
         var result = calc()
         currentValue = 0
@@ -142,17 +169,19 @@
     <div id="key-9" class="item">9 </div>
     <div id="key-8" class="item">8 </div>
     <div id="key-7" class="item">7 </div>
-    <div id="key-ac" class="item operatoren">AC</div>
+    <div id="key-+" class="item operatoren">+</div>
     <div id="key-6" class="item">6 </div>
     <div id="key-5" class="item">5 </div>
     <div id="key-4" class="item">4 </div>
-    <div id="key-+" class="item operatoren">+</div>
+    <div id="key--" class="item operatoren">-</div>
     <div id="key-3" class="item">3</div>
     <div id="key-2" class="item">2</div>
     <div id="key-1" class="item">1</div>
-    <div id="key--" class="item operatoren">-</div>
+    <div id="key-x" class="item operatoren">x</div>
     <div id="key-0" class="item">0</div>
-    <div id="key-=" class="item operatoren">=</div>
+    <div id="key-:" class="item operatoren">:</div>
+    <div id="key-ac" class="item operatoren operatoren2">AC</div>
+    <div id="key-=" class="item operatoren operatoren2">=</div>
   </div>
 </body>
 
