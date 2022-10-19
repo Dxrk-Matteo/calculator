@@ -107,9 +107,13 @@
       document.getElementById("key-5").addEventListener('click', function () {
         if (isFractionalNumber) {
           decimalPlaces++
+          var neuerWert = currentValue + 5 / Math.pow(10, decimalPlaces)
+          neuerWert = neuerWert * Math.pow(10,decimalPlaces)
+          neuerWert = Math.round()
           currentValue = currentValue + 5 / Math.pow(10, decimalPlaces)
+          currentValue = currentValue * 
         } else {
-          currentValue = currentValue * 10 + 5
+        currentValue = currentValue * 10 + 5
         }
         disp.innerText = currentValue.toString();
       });
@@ -151,7 +155,7 @@
         op1 = currentValue;
         operator = "x"
         currentValue = 0
-        disp.innerText = currentValue.toString(); currentValue = currentValue * 10 + 5
+        disp.innerText = currentValue.toString();
       });
 
       document.getElementById("key-:").addEventListener('click', function () {
@@ -184,6 +188,7 @@
 </head>
 
 <body>
+  
   <div class="container">
     <div id="disp"> </div>
     <div id="key-9" class="item">9 </div>
