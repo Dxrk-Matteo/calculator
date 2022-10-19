@@ -20,7 +20,15 @@
     }
 
     #key-0 {
-      width: 71%;
+      width: 46%;
+    }
+
+    #key-dot {
+      background-color: rgb(73, 73, 73);
+    }
+
+    #key-eq {
+      width: 48%;
     }
 
     .operatoren {
@@ -29,7 +37,7 @@
     }
 
     .operatoren2 {
-      width: 47%;
+      width: 46%;
     }
 
 
@@ -48,6 +56,8 @@
     var op1 = 0;
     var op2 = 0;
     var operator = null;
+    var isFractionalNumber = false
+    var decimalPlaces = 0
     function add0() {
 
     }
@@ -95,7 +105,12 @@
         disp.innerText = currentValue.toString();
       });
       document.getElementById("key-5").addEventListener('click', function () {
-        currentValue = currentValue * 10 + 5
+        if (isFractionalNumber) {
+          decimalPlaces++
+          currentValue = currentValue + 5 / Math.pow(10, decimalPlaces)
+        } else {
+          currentValue = currentValue * 10 + 5
+        }
         disp.innerText = currentValue.toString();
       });
       document.getElementById("key-6").addEventListener('click', function () {
@@ -136,7 +151,7 @@
         op1 = currentValue;
         operator = "x"
         currentValue = 0
-        disp.innerText = currentValue.toString();
+        disp.innerText = currentValue.toString(); currentValue = currentValue * 10 + 5
       });
 
       document.getElementById("key-:").addEventListener('click', function () {
@@ -146,7 +161,12 @@
         disp.innerText = currentValue.toString();
       });
 
-      document.getElementById("key-=").addEventListener('click', function () {
+      document.getElementById("key-dot").addEventListener('click', function () {
+        isFractionalNumber = true
+        decimalPlaces = 0
+      });
+
+      document.getElementById("key-eq").addEventListener('click', function () {
 
         op2 = currentValue;
         var result = calc()
@@ -179,9 +199,10 @@
     <div id="key-1" class="item">1</div>
     <div id="key-x" class="item operatoren">x</div>
     <div id="key-0" class="item">0</div>
+    <div id="key-dot" class="item">,</div>
     <div id="key-:" class="item operatoren">:</div>
     <div id="key-ac" class="item operatoren operatoren2">AC</div>
-    <div id="key-=" class="item operatoren operatoren2">=</div>
+    <div id="key-eq" class="item operatoren operatoren2">=</div>
   </div>
 </body>
 
