@@ -17,6 +17,7 @@
       background-color: rgb(60, 87, 58);
       width: 98%;
       padding: 5%;
+      font-size: xx-large;
     }
 
     #key-0 {
@@ -25,6 +26,10 @@
 
     #key-dot {
       background-color: rgb(73, 73, 73);
+    }
+
+    #key-dot:hover {
+      background-color: rgb(131, 130, 130);
     }
 
     #key-eq {
@@ -48,6 +53,19 @@
       gap: 10px 2%;
 
 
+    }
+
+    .cursor {
+      cursor: pointer;
+    }
+
+    .cursor:hover {
+      background-color: rgb(131, 130, 130);
+    }
+
+    .operatoren:hover {
+      background-color: rgb(131, 130, 130);
+      cursor: pointer;
     }
   </style>
   <script>
@@ -80,89 +98,79 @@
           break;
       }
     }
+    function addDigit(digit) {
+      if (isFractionalNumber) {
+        decimalPlaces++
+        var exp = Math.pow(10, decimalPlaces)
+        var neuerWert = currentValue + digit / exp
+        neuerWert = neuerWert * exp
+        currentValue = Math.round(neuerWert) / exp
+      } else {
+        currentValue = currentValue * 10 + digit
+      }
+      disp.innerText = currentValue.toString();
+    }
+    function operatorcalc(op) {
+      operator = op
+      isFractionalNumber = false
+      decimalPlaces = 0
+      op1 = currentValue;
+      currentValue = 0
+      disp.innerText = currentValue.toString();
+    }
 
     function init() {
       disp = document.getElementById('disp');
 
       document.getElementById("key-0").addEventListener('click', function () {
-        currentValue = currentValue * 10;
-        disp.innerText = currentValue.toString();
+        addDigit(0)
       });
       document.getElementById("key-1").addEventListener('click', function () {
-        currentValue = currentValue * 10 + 1
-        disp.innerText = currentValue.toString();
+        addDigit(1)
       });
       document.getElementById("key-2").addEventListener('click', function () {
-        currentValue = currentValue * 10 + 2
-        disp.innerText = currentValue.toString();
+        addDigit(2)
       });
       document.getElementById("key-3").addEventListener('click', function () {
-        currentValue = currentValue * 10 + 3
-        disp.innerText = currentValue.toString();
+        addDigit(3)
       });
       document.getElementById("key-4").addEventListener('click', function () {
-        currentValue = currentValue * 10 + 4
-        disp.innerText = currentValue.toString();
+        addDigit(4)
       });
       document.getElementById("key-5").addEventListener('click', function () {
-        if (isFractionalNumber) {
-          decimalPlaces++
-          var neuerWert = currentValue + 5 / Math.pow(10, decimalPlaces)
-          neuerWert = neuerWert * Math.pow(10,decimalPlaces)
-          neuerWert = Math.round()
-          currentValue = currentValue + 5 / Math.pow(10, decimalPlaces)
-          currentValue = currentValue * 
-        } else {
-        currentValue = currentValue * 10 + 5
-        }
-        disp.innerText = currentValue.toString();
+        addDigit(5)
       });
       document.getElementById("key-6").addEventListener('click', function () {
-        currentValue = currentValue * 10 + 6
-        disp.innerText = currentValue.toString();
+        addDigit(6)
       });
       document.getElementById("key-7").addEventListener('click', function () {
-        currentValue = currentValue * 10 + 7
-        disp.innerText = currentValue.toString();
+        addDigit(7)
       });
       document.getElementById("key-8").addEventListener('click', function () {
-        currentValue = currentValue * 10 + 8
-        disp.innerText = currentValue.toString();
+        addDigit(8)
       });
       document.getElementById("key-9").addEventListener('click', function () {
-        currentValue = currentValue * 10 + 9
-        disp.innerText = currentValue.toString();
+        addDigit(9)
       });
       document.getElementById("key-ac").addEventListener('click', function () {
         currentValue = 0
-        disp.innerText = currentValue.toString();
+        operatorcalc(null)
+
       })
       document.getElementById("key-+").addEventListener('click', function () {
-        op1 = currentValue;
-        operator = "+"
-        currentValue = 0
-        disp.innerText = currentValue.toString();
+        operatorcalc("+")
       });
 
       document.getElementById("key--").addEventListener('click', function () {
-        op1 = currentValue;
-        operator = "-"
-        currentValue = 0
-        disp.innerText = currentValue.toString();
+        operatorcalc("-")
       });
 
       document.getElementById("key-x").addEventListener('click', function () {
-        op1 = currentValue;
-        operator = "x"
-        currentValue = 0
-        disp.innerText = currentValue.toString();
+        operatorcalc("x")
       });
 
       document.getElementById("key-:").addEventListener('click', function () {
-        op1 = currentValue;
-        operator = ":"
-        currentValue = 0
-        disp.innerText = currentValue.toString();
+        operatorcalc(":")
       });
 
       document.getElementById("key-dot").addEventListener('click', function () {
@@ -188,23 +196,23 @@
 </head>
 
 <body>
-  
+
   <div class="container">
     <div id="disp"> </div>
-    <div id="key-9" class="item">9 </div>
-    <div id="key-8" class="item">8 </div>
-    <div id="key-7" class="item">7 </div>
+    <div id="key-9" class="cursor item">9 </div>
+    <div id="key-8" class="cursor item">8 </div>
+    <div id="key-7" class="cursor item">7 </div>
     <div id="key-+" class="item operatoren">+</div>
-    <div id="key-6" class="item">6 </div>
-    <div id="key-5" class="item">5 </div>
-    <div id="key-4" class="item">4 </div>
+    <div id="key-6" class="cursor item">6 </div>
+    <div id="key-5" class="cursor item">5 </div>
+    <div id="key-4" class="cursor item">4 </div>
     <div id="key--" class="item operatoren">-</div>
-    <div id="key-3" class="item">3</div>
-    <div id="key-2" class="item">2</div>
-    <div id="key-1" class="item">1</div>
+    <div id="key-3" class="cursor item">3</div>
+    <div id="key-2" class="cursor item">2</div>
+    <div id="key-1" class="cursor item">1</div>
     <div id="key-x" class="item operatoren">x</div>
-    <div id="key-0" class="item">0</div>
-    <div id="key-dot" class="item">,</div>
+    <div id="key-0" class="cursor item">0</div>
+    <div id="key-dot" class="cursor item">,</div>
     <div id="key-:" class="item operatoren">:</div>
     <div id="key-ac" class="item operatoren operatoren2">AC</div>
     <div id="key-eq" class="item operatoren operatoren2">=</div>
