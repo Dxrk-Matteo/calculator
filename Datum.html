@@ -1,0 +1,36 @@
+<html>
+<style>
+    h1 {
+        background-color: green;
+        color: white;
+        text-align: center;
+        font-size: xx-large;
+        padding: 2%;
+    }
+
+    #datum {
+        font-size: x-large;
+        text-align: center;
+    }
+</style>
+
+<head>
+    <h1> Das heutige Datum</h1>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function datum() {
+            var Jetzt = new Date();
+            var Tag = Jetzt.getDate();
+            var Monat = Jetzt.getMonth() + 1;
+            var Jahr = Jetzt.getFullYear();
+            document.getElementById("datum").innerHTML = "Heute ist der " + Tag + "." + Monat + "." + Jahr
+        }
+        window.setInterval("datum()", 1000)
+    </script>
+    <p id="datum">Hier kommt gleich das heutige Datum</p>
+
+</body>
+
+</html>
